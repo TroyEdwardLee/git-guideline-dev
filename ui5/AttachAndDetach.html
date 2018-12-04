@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Correctly Removing Event Listeners with SAPUI5</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <script id="sap-ui-bootstrap"
+            src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-libs="sap.ui.commons">
+        </script>
+        
+        <style>
+            /* here you could overwrite some sapui5 styles you don't like */
+        </style>
+        
+        <script>
+            var oBtn, fnPressHandler;
+            
+            fnPressHandler = function (oEvent) {
+                var src;
+                
+                alert("fnPressHandler(oEvent) has been called");
+                
+                //we will not use this although this would work in our use case
+                //this.detachPress(fnPressHandler);
+                
+                src = oEvent.getSource();
+                if (src instanceof sap.ui.commons.Button) {
+                    alert("Now remove the handler function for press event");
+                    src.detachPress(fnPressHandler);
+                    //from now on fnPressHandler() will not be called when ever
+                    //the button is pressed
+                } 
+            };
+            
+            oBtn = new sap.ui.commons.Button({
+                text : "detachPress"
+            });
+            oBtn.attachPress(fnPressHandler);
+            oBtn.placeAt("content");
+            
+        </script>
+        
+    </head>
+    
+    <body class="sapUiBody" role="application">
+        <div id="content"></div>
+    </body>
+    
+</html>

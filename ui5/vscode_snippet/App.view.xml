@@ -1,0 +1,11 @@
+<mvc:View controllerName="sap.ems.ui.app.${1:template}.controller.${0:$TM_FILENAME_BASE}" 
+    xmlns="sap.m" 
+    xmlns:mvc="sap.ui.core.mvc">
+    <App id="id-app">
+        <pages>
+            <Page title="{i18n>title}">
+                <content></content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
